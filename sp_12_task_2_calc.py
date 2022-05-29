@@ -1,3 +1,5 @@
+# Номер посылки - 68684300
+
 class Stack:
     def __init__(self):
         self.items = []
@@ -17,7 +19,7 @@ def calc_result(expression:str):
     elements = expression.split(' ')
     operands = Stack()
     for element in elements:
-        if element.isdigit():
+        if element.isdigit() or element[1:].isdigit():
             operands.push(element)
         else:
             operator = '//' if element == '/' else element
@@ -28,7 +30,6 @@ def calc_result(expression:str):
                 )
             )
     return operands.pop()
-
 
 if __name__ == '__main__':
     expression = input()
