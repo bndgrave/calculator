@@ -1,33 +1,39 @@
 # Номер посылки - 68684300
+import operator as op
 
 class Stack:
     def __init__(self):
-        self.items = []
+        self.__items = []
 
-    def is_empty(self):
-        return len(self.items) == 0
+    def __is_empty(self):
+        return not self.__items
     
     def push(self, item):
-        self.items.append(item)
+        self.__items.append(item)
 
     def pop(self):
-        value = self.items.pop()
+        value = self.__items.pop()
         return value
 
+def string_to_operator(string):
+    pass
 
 def calc_result(expression:str):
+    operators = {
+        '+': op.add,
+        '-': op.sub,
+        '*': op.mul,
+        '/': op.floordiv,
+    }
     elements = expression.split(' ')
     operands = Stack()
     for element in elements:
         if element.isdigit() or element[1:].isdigit():
             operands.push(element)
         else:
-            operator = '//' if element == '/' else element
-            pair_to_calc = [operands.pop() for index in range(2)]
+            operand_1, operand_2 = operands.pop(), operands.pop()
             operands.push(
-                str(
-                    eval(pair_to_calc[1] + operator + pair_to_calc[0])
-                )
+                operators[element](operand_1,operand_2)
             )
     return operands.pop()
 
