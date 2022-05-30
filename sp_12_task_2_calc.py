@@ -5,18 +5,12 @@ class Stack:
     def __init__(self):
         self.__items = []
 
-    def __is_empty(self):
-        return not self.__items
-    
     def push(self, item):
         self.__items.append(item)
 
     def pop(self):
         value = self.__items.pop()
         return value
-
-def string_to_operator(string):
-    pass
 
 def calc_result(expression:str):
     operators = {
