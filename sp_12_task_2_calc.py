@@ -1,4 +1,4 @@
-# Номер посылки - 68684300
+# Номер посылки - 68697847
 import operator as op
 
 class Stack:
@@ -29,11 +29,12 @@ def calc_result(expression:str):
     operands = Stack()
     for element in elements:
         if element.isdigit() or element[1:].isdigit():
-            operands.push(element)
+            operands.push(int(element))
         else:
-            operand_1, operand_2 = operands.pop(), operands.pop()
+            operand_1 = operands.pop()
+            operand_2 = operands.pop()
             operands.push(
-                operators[element](operand_1,operand_2)
+                operators[element](operand_2, operand_1)
             )
     return operands.pop()
 
