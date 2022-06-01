@@ -1,5 +1,7 @@
-# Номер посылки - 68697847
-import operator as op
+# Номер посылки - 68726807
+
+import operator
+
 
 class Stack:
     def __init__(self):
@@ -14,10 +16,10 @@ class Stack:
 
 def calc_result(expression:str):
     operators = {
-        '+': op.add,
-        '-': op.sub,
-        '*': op.mul,
-        '/': op.floordiv,
+        '+': operator.add,
+        '-': operator.sub,
+        '*': operator.mul,
+        '/': operator.floordiv,
     }
     elements = expression.split(' ')
     operands = Stack()
@@ -31,6 +33,7 @@ def calc_result(expression:str):
                 operators[element](operand_2, operand_1)
             )
     return operands.pop()
+
 
 if __name__ == '__main__':
     expression = input()
