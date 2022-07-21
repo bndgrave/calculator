@@ -1,5 +1,3 @@
-# Номер посылки - 68726807
-
 import operator
 
 
@@ -13,6 +11,7 @@ class Stack:
     def pop(self):
         value = self.__items.pop()
         return value
+
 
 def calc_result(expression:str):
     operators = {
